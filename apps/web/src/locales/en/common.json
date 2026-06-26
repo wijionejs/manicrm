@@ -1,0 +1,11 @@
+{
+  "app_name": "ManiCRM",
+  "loading": "Loading...",
+  "error": "An error occurred",
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "create": "Create",
+  "back": "Back"
+}
