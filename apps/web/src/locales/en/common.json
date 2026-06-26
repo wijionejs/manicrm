@@ -7,5 +7,26 @@
   "delete": "Delete",
   "edit": "Edit",
   "create": "Create",
-  "back": "Back"
+  "back": "Back",
+  "workspace": {
+    "your_workspaces": "Your studios",
+    "create": "Create studio"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "bookings": "Bookings",
+    "clients": "Clients",
+    "services": "Services",
+    "settings": "Settings"
+  },
+  "dashboard": {
+    "greeting": "Hello, {{name}}!",
+    "subtitle": "Here's what's happening in your salon today.",
+    "stats": {
+      "bookings_today": "Bookings today",
+      "clients": "Clients",
+      "services": "Services",
+      "revenue_month": "Revenue this month"
+    }
+  }
 }

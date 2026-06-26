@@ -18,13 +18,13 @@ export function LoginPage() {
   }
 
   if (session) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/" replace />;
   }
 
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
       provider: 'google',
-      callbackURL: `${window.location.origin}/dashboard`,
+      callbackURL: `${window.location.origin}`,
     });
   };
 

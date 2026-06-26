@@ -7,5 +7,26 @@
   "delete": "Видалити",
   "edit": "Редагувати",
   "create": "Створити",
-  "back": "Назад"
+  "back": "Назад",
+  "workspace": {
+    "your_workspaces": "Ваші студії",
+    "create": "Створити студію"
+  },
+  "nav": {
+    "dashboard": "Головна",
+    "bookings": "Записи",
+    "clients": "Клієнти",
+    "services": "Послуги",
+    "settings": "Налаштування"
+  },
+  "dashboard": {
+    "greeting": "Привіт, {{name}}!",
+    "subtitle": "Ось що відбувається у вашому салоні сьогодні.",
+    "stats": {
+      "bookings_today": "Записів сьогодні",
+      "clients": "Клієнтів",
+      "services": "Послуг",
+      "revenue_month": "Дохід за місяць"
+    }
+  }
 }
