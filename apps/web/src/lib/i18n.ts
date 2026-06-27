@@ -4,16 +4,18 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import enCommon from '../locales/en/common.json';
 import enAuth from '../locales/en/auth.json';
+import enWorkspace from '../locales/en/workspace.json';
 import ukCommon from '../locales/uk/common.json';
 import ukAuth from '../locales/uk/auth.json';
+import ukWorkspace from '../locales/uk/workspace.json';
 
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
-      en: { common: enCommon, auth: enAuth },
-      uk: { common: ukCommon, auth: ukAuth },
+      en: { common: enCommon, auth: enAuth, workspace: enWorkspace },
+      uk: { common: ukCommon, auth: ukAuth, workspace: ukWorkspace },
     },
     fallbackLng: 'uk',
     defaultNS: 'common',

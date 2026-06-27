@@ -3,18 +3,14 @@ import { Navigate } from 'react-router';
 import { authClient } from '@/lib/auth-client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { LoadingScreen } from '@/components/LoadingScreen';
 
 export function LoginPage() {
   const { t } = useTranslation('auth');
-  const { t: tc } = useTranslation('common');
   const { data: session, isPending } = authClient.useSession();
 
   if (isPending) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-muted-foreground">{tc('loading')}</p>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   if (session) {

@@ -2,13 +2,22 @@
   "name": "@manicrm/schemas",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
   "exports": {
     ".": {
       "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "peerDependencies": {
     "zod": ">=4.0.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1"
   }
 }

@@ -79,7 +79,7 @@ export function DashboardLayout() {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          window.location.href = '/login';
+          window.location.href = '/app/login';
         },
       },
     });

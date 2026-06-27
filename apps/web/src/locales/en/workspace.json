@@ -1,0 +1,18 @@
+{
+  "create_title": "Create workspace",
+  "create_success": "Workspace created successfully!",
+  "creating": "Creating...",
+  "no_workspaces_title": "Welcome to ManiCRM",
+  "no_workspaces_subtitle": "Create your first workspace to get started",
+  "fields": {
+    "title": "Name",
+    "title_placeholder": "My nail studio",
+    "slug": "URL slug",
+    "slug_hint": "Used in the address: /w/my-slug"
+  },
+  "errors": {
+    "slug_taken": "This slug is already taken. Try another.",
+    "limit_reached": "Workspace limit reached (max 2).",
+    "generic": "Something went wrong. Please try again."
+  }
+}

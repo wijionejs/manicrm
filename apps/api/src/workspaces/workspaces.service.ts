@@ -1,5 +1,11 @@
-import { ConflictException, Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { and, eq } from 'drizzle-orm';
+import {
+  ConflictException,
+  ForbiddenException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { and, count, eq } from 'drizzle-orm';
 import type { DrizzleDB } from '../db/db.module';
 import { DRIZZLE } from '../db/db.module';
 import { workspace, workspaceMember } from '../db/schema';
@@ -10,8 +16,16 @@ export class WorkspacesService {
   constructor(@Inject(DRIZZLE) private readonly db: DrizzleDB) {}
 
   async create(userId: string, dto: CreateWorkspaceDto) {
+    const [{ total }] = await this.db
+      .select({ total: count() })
+      .from(workspace)
+      .where(eq(workspace.userId, userId));
+
+    if (total >= 2) throw new ForbiddenException('Workspace limit reached (max 2)');
+
     return this.db.transaction(async (tx) => {
       let created: typeof workspace.$inferSelect;
+
       try {
         [created] = await tx
           .insert(workspace)

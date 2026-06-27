@@ -10,7 +10,7 @@ export const api = ky.create({
       async ({ response }) => {
         if (response.status === 401) {
           await authClient.signOut();
-          router.navigate('/login');
+          router.navigate('/app/login');
         }
       },
     ],
