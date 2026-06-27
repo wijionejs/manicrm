@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DbModule } from './db/db.module';
 import { AuthModule } from './auth/auth.module';
+import { WorkspacesModule } from './workspaces/workspaces.module';
 
 const envSchema = z.object({
   DATABASE_URL: z.string(),
@@ -24,6 +25,7 @@ const envSchema = z.object({
     }),
     DbModule,
     AuthModule,
+    WorkspacesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -59,16 +59,16 @@ cd apps/web && pnpm dev
 
 ### Backend (`apps/api`)
 
-| Concern        | Library                                  |
-| -------------- | ---------------------------------------- |
-| Framework      | NestJS 11                                |
-| Database       | PostgreSQL (via Docker)                  |
-| ORM            | Drizzle ORM                              |
-| Auth           | better-auth (Google OAuth, JWT sessions) |
-| Validation     | Zod                                      |
-| Infrastructure | docker-compose                           |
+| Concern        | Library                    |
+| -------------- | -------------------------- |
+| Framework      | NestJS 11                  |
+| Database       | PostgreSQL (via Docker)    |
+| ORM            | Drizzle ORM                |
+| Auth           | better-auth (Google OAuth) |
+| Validation     | Zod                        |
+| Infrastructure | docker-compose             |
 
-**Auth notes:** better-auth issues **JWT tokens** (not cookie sessions). The frontend stores the token in memory and attaches it via `Authorization: Bearer` header via ky's `beforeRequest` hook. Never store JWTs in `localStorage`.
+**Auth notes:** better-auth issues **opaque session tokens**. The frontend stores the token in cookie and attaches it to every request.
 
 ## Domain model (MVP)
 
