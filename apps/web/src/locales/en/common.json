@@ -19,6 +19,16 @@
     "services": "Services",
     "settings": "Settings"
   },
+  "errors": {
+    "INTERNAL_SERVER_ERROR": "Something went wrong. Please try again.",
+    "UNAUTHENTICATED": "You must be logged in.",
+    "VALIDATION_ERROR": "Invalid input data.",
+    "WORKSPACE_NOT_FOUND": "Workspace not found.",
+    "WORKSPACE_LIMIT_REACHED": "You can only create up to {{limit}} workspaces.",
+    "SLUG_ALREADY_TAKEN": "This slug is already taken.",
+    "NOT_WORKSPACE_MEMBER": "You are not a member of this workspace.",
+    "INSUFFICIENT_PERMISSIONS": "You don't have permission to perform this action."
+  },
   "dashboard": {
     "greeting": "Hello, {{name}}!",
     "subtitle": "Here's what's happening in your salon today.",

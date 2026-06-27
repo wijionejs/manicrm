@@ -1,5 +1,6 @@
-import { CanActivate, ExecutionContext, ForbiddenException, Injectable } from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
+import { InsufficientPermissionsError } from '../../common/errors/workspace.errors';
 import { ROLES_KEY } from '../../common/decorators/roles.decorator';
 import type { WorkspaceRole } from '../../common/decorators/roles.decorator';
 
@@ -18,7 +19,7 @@ export class RolesGuard implements CanActivate {
     const member = request.workspaceMember;
 
     if (!member || !roles.includes(member.role)) {
-      throw new ForbiddenException('Insufficient permissions');
+      throw new InsufficientPermissionsError();
     }
     return true;
   }

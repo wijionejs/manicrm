@@ -19,6 +19,16 @@
     "services": "Послуги",
     "settings": "Налаштування"
   },
+  "errors": {
+    "INTERNAL_SERVER_ERROR": "Щось пішло не так. Спробуйте ще раз.",
+    "UNAUTHENTICATED": "Необхідно увійти в систему.",
+    "VALIDATION_ERROR": "Некоректні дані.",
+    "WORKSPACE_NOT_FOUND": "Студію не знайдено.",
+    "WORKSPACE_LIMIT_REACHED": "Можна створити максимум {{limit}} студії.",
+    "SLUG_ALREADY_TAKEN": "Цей слаг вже зайнятий.",
+    "NOT_WORKSPACE_MEMBER": "Ви не є учасником цієї студії.",
+    "INSUFFICIENT_PERMISSIONS": "У вас немає дозволу на виконання цієї дії."
+  },
   "dashboard": {
     "greeting": "Привіт, {{name}}!",
     "subtitle": "Ось що відбувається у вашому салоні сьогодні.",

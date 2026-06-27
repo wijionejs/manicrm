@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 import { createWorkspaceSchema, type CreateWorkspaceDto } from '@manicrm/schemas';
+import { getApiError } from '@/lib/api-error';
 import { useCreateWorkspace } from './hooks/useWorkspaces';
 import {
   Dialog,
@@ -71,11 +72,9 @@ export function CreateWorkspaceDialog({ open, onOpenChange }: Props) {
         onOpenChange(false);
         navigate(`/w/${workspace.slug}/dashboard`);
       },
-      onError: (err: unknown) => {
-        const status = (err as { response?: { status?: number } })?.response?.status;
-        if (status === 409) toast.error(t('errors.slug_taken'));
-        else if (status === 403) toast.error(t('errors.limit_reached'));
-        else toast.error(t('errors.generic'));
+      onError: async (err) => {
+        const { key, metadata } = await getApiError(err);
+        toast.error(tCommon(`errors.${key}`, metadata));
       },
     });
   };

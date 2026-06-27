@@ -2,9 +2,11 @@ import { NestFactory } from '@nestjs/core';
 import { toNodeHandler } from 'better-auth/node';
 import { AppModule } from './app.module';
 import { AuthService } from './auth/auth.service';
+import { AppExceptionFilter } from './common/filters/app-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.useGlobalFilters(new AppExceptionFilter());
 
   app.enableCors({
     origin: process.env.CORS_ORIGIN || 'http://localhost:5173',

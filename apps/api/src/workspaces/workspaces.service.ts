@@ -1,11 +1,12 @@
-import {
-  ConflictException,
-  ForbiddenException,
-  Inject,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { and, count, eq } from 'drizzle-orm';
+import { DrizzleQueryError } from 'drizzle-orm/errors';
+import postgres from 'postgres';
+import {
+  SlugAlreadyTakenError,
+  WorkspaceLimitReachedError,
+  WorkspaceNotFoundError,
+} from '../common/errors/workspace.errors';
 import type { DrizzleDB } from '../db/db.module';
 import { DRIZZLE } from '../db/db.module';
 import { workspace, workspaceMember } from '../db/schema';
@@ -13,6 +14,8 @@ import type { CreateWorkspaceDto, UpdateWorkspaceDto } from './dto/workspace.dto
 
 @Injectable()
 export class WorkspacesService {
+  static readonly WORKSPACE_LIMIT = 2;
+
   constructor(@Inject(DRIZZLE) private readonly db: DrizzleDB) {}
 
   async create(userId: string, dto: CreateWorkspaceDto) {
@@ -21,7 +24,8 @@ export class WorkspacesService {
       .from(workspace)
       .where(eq(workspace.userId, userId));
 
-    if (total >= 2) throw new ForbiddenException('Workspace limit reached (max 2)');
+    if (total >= WorkspacesService.WORKSPACE_LIMIT)
+      throw new WorkspaceLimitReachedError(WorkspacesService.WORKSPACE_LIMIT);
 
     return this.db.transaction(async (tx) => {
       let created: typeof workspace.$inferSelect;
@@ -31,8 +35,14 @@ export class WorkspacesService {
           .insert(workspace)
           .values({ ...dto, userId })
           .returning();
-      } catch (err: any) {
-        if (err.code === '23505') throw new ConflictException('Slug already taken');
+      } catch (err) {
+        if (
+          err instanceof DrizzleQueryError &&
+          err.cause instanceof postgres.PostgresError &&
+          err.cause.code === '23505'
+        ) {
+          throw new SlugAlreadyTakenError();
+        }
         throw err;
       }
 
@@ -70,7 +80,7 @@ export class WorkspacesService {
       .from(workspace)
       .where(eq(workspace.id, workspaceId))
       .limit(1);
-    if (!ws) throw new NotFoundException('Workspace not found');
+    if (!ws) throw new WorkspaceNotFoundError();
     return ws;
   }
 
@@ -82,11 +92,13 @@ export class WorkspacesService {
         .set({ ...dto, updatedAt: new Date() })
         .where(eq(workspace.id, workspaceId))
         .returning();
-    } catch (err: any) {
-      if (err.code === '23505') throw new ConflictException('Slug already taken');
+    } catch (err) {
+      if (err instanceof postgres.PostgresError && err.code === '23505') {
+        throw new SlugAlreadyTakenError();
+      }
       throw err;
     }
-    if (!updated) throw new NotFoundException('Workspace not found');
+    if (!updated) throw new WorkspaceNotFoundError();
     return updated;
   }
 
@@ -95,7 +107,7 @@ export class WorkspacesService {
       .delete(workspace)
       .where(eq(workspace.id, workspaceId))
       .returning();
-    if (!deleted) throw new NotFoundException('Workspace not found');
+    if (!deleted) throw new WorkspaceNotFoundError();
     return deleted;
   }
 }
