@@ -7,17 +7,18 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
-import { Roles } from '../common/decorators/roles.decorator';
 import { ZodValidationPipe } from '../common/pipes/zod-validation.pipe';
 import { WorkspaceMemberGuard } from '../workspaces/guards/workspace-member.guard';
-import { RolesGuard } from '../workspaces/guards/roles.guard';
 import { ClientsService } from './clients.service';
 import {
   createClientSchema,
+  listClientsQuerySchema,
   updateClientSchema,
   type CreateClientDto,
+  type ListClientsQueryDto,
   type UpdateClientDto,
 } from './dto/client.dto';
 
@@ -27,8 +28,6 @@ export class ClientsController {
   constructor(private readonly clientsService: ClientsService) {}
 
   @Post()
-  @UseGuards(RolesGuard)
-  @Roles('owner', 'admin')
   create(
     @Param('workspaceId', ParseUUIDPipe) workspaceId: string,
     @Body(new ZodValidationPipe(createClientSchema)) dto: CreateClientDto,
@@ -37,8 +36,11 @@ export class ClientsController {
   }
 
   @Get()
-  findAll(@Param('workspaceId', ParseUUIDPipe) workspaceId: string) {
-    return this.clientsService.findAll(workspaceId);
+  findAll(
+    @Param('workspaceId', ParseUUIDPipe) workspaceId: string,
+    @Query(new ZodValidationPipe(listClientsQuerySchema)) query: ListClientsQueryDto,
+  ) {
+    return this.clientsService.findAll(workspaceId, query);
   }
 
   @Get(':clientId')
@@ -50,8 +52,6 @@ export class ClientsController {
   }
 
   @Patch(':clientId')
-  @UseGuards(RolesGuard)
-  @Roles('owner', 'admin')
   update(
     @Param('workspaceId', ParseUUIDPipe) workspaceId: string,
     @Param('clientId', ParseUUIDPipe) clientId: string,
@@ -61,8 +61,6 @@ export class ClientsController {
   }
 
   @Delete(':clientId')
-  @UseGuards(RolesGuard)
-  @Roles('owner', 'admin')
   remove(
     @Param('workspaceId', ParseUUIDPipe) workspaceId: string,
     @Param('clientId', ParseUUIDPipe) clientId: string,

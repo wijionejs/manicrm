@@ -1,4 +1,4 @@
-import { boolean, date, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { date, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { workspace } from './workspace.schema';
 
 export const client = pgTable('client', {
@@ -10,7 +10,6 @@ export const client = pgTable('client', {
   telegram: text('telegram'),
   birthday: date('birthday'),
   notes: text('notes'),
-  isBlacklisted: boolean('is_blacklisted').notNull().default(false),
   workspaceId: uuid('workspace_id')
     .notNull()
     .references(() => workspace.id, { onDelete: 'cascade' }),

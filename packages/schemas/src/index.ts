@@ -22,10 +22,17 @@ export const createClientSchema = z.object({
   telegram: z.string().max(100).optional(),
   birthday: z.iso.date().optional(),
   notes: z.string().max(1000).optional(),
-  isBlacklisted: z.boolean().optional().default(false),
 });
 
 export const updateClientSchema = createClientSchema.partial();
 
 export type CreateClientDto = z.infer<typeof createClientSchema>;
 export type UpdateClientDto = z.infer<typeof updateClientSchema>;
+
+export const listClientsQuerySchema = z.object({
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(100).default(15),
+  search: z.string().optional(),
+});
+
+export type ListClientsQueryDto = z.infer<typeof listClientsQuerySchema>;

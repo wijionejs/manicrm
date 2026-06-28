@@ -8,6 +8,7 @@ import { LoginPage } from '@/features/auth/LoginPage';
 import { WorkspaceProvider } from '@/features/workspace/WorkspaceContext';
 import { DashboardLayout } from '@/features/dashboard/DashboardLayout';
 import { DashboardPage } from '@/features/dashboard/DashboardPage';
+import { ClientsPage } from '@/features/clients/ClientsPage';
 import { useWorkspaces } from '@/features/workspace/hooks/useWorkspaces';
 import { CreateWorkspaceDialog } from '@/features/workspace/CreateWorkspaceDialog';
 import { Button } from '@/components/ui/button';
@@ -96,7 +97,7 @@ export const router = createBrowserRouter(
               children: [
                 { path: 'dashboard', element: <DashboardPage /> },
                 { path: 'bookings', element: <ComingSoon title="Bookings" /> },
-                { path: 'clients', element: <ComingSoon title="Clients" /> },
+                { path: 'clients', element: <ClientsPage /> },
                 { path: 'services', element: <ComingSoon title="Services" /> },
                 { path: 'settings', element: <ComingSoon title="Settings" /> },
               ],

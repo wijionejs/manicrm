@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { and, eq } from 'drizzle-orm';
+import { and, count, eq, ilike, or } from 'drizzle-orm';
 import { ClientNotFoundError } from '../common/errors/client.errors';
 import type { DrizzleDB } from '../db/db.module';
 import { DRIZZLE } from '../db/db.module';
 import { client } from '../db/schema';
-import type { CreateClientDto, UpdateClientDto } from './dto/client.dto';
+import type { CreateClientDto, ListClientsQueryDto, UpdateClientDto } from './dto/client.dto';
 
 @Injectable()
 export class ClientsService {
@@ -18,8 +18,33 @@ export class ClientsService {
     return created;
   }
 
-  async findAll(workspaceId: string) {
-    return this.db.select().from(client).where(eq(client.workspaceId, workspaceId));
+  async findAll(workspaceId: string, query: ListClientsQueryDto) {
+    const { page, limit, search } = query;
+    const offset = (page - 1) * limit;
+
+    const where = search
+      ? and(
+          eq(client.workspaceId, workspaceId),
+          or(
+            ilike(client.firstName, `%${search}%`),
+            ilike(client.lastName, `%${search}%`),
+            ilike(client.phoneNumber, `%${search}%`),
+          ),
+        )
+      : eq(client.workspaceId, workspaceId);
+
+    const [data, [{ total }]] = await Promise.all([
+      this.db
+        .select()
+        .from(client)
+        .where(where)
+        .orderBy(client.lastName, client.firstName)
+        .limit(limit)
+        .offset(offset),
+      this.db.select({ total: count() }).from(client).where(where),
+    ]);
+
+    return { data, total, page, limit };
   }
 
   async findOne(workspaceId: string, clientId: string) {

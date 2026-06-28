@@ -1,0 +1,39 @@
+{
+  "title": "Клієнти",
+  "add_client": "Додати клієнта",
+  "edit_client": "Редагувати клієнта",
+  "create_client": "Новий клієнт",
+  "create_success": "Клієнта успішно додано",
+  "update_success": "Клієнта оновлено",
+  "delete_success": "Клієнта видалено",
+  "delete_confirm_title": "Видалити клієнта?",
+  "delete_confirm_description": "Цю дію не можна скасувати. Клієнта {{name}} буде видалено назавжди.",
+  "empty_title": "Немає клієнтів",
+  "empty_subtitle": "Додайте першого клієнта, щоб почати роботу.",
+  "creating": "Додавання...",
+  "saving": "Збереження...",
+  "deleting": "Видалення...",
+  "blacklisted": "Чорний список",
+  "page_info": "Сторінка {{current}} з {{total}}",
+  "search_placeholder": "Пошук за іменем, прізвищем або телефоном...",
+  "table": {
+    "name": "Ім'я",
+    "contact": "Контакти",
+    "birthday": "Д/н",
+    "notes": "Нотатки",
+    "status": "Статус",
+    "actions": "Дії"
+  },
+  "fields": {
+    "first_name": "Ім'я",
+    "last_name": "Прізвище",
+    "phone": "Телефон",
+    "instagram": "Instagram",
+    "telegram": "Telegram",
+    "birthday": "День народження",
+    "birthday_placeholder": "Оберіть дату",
+    "notes": "Нотатки",
+    "notes_placeholder": "Додаткова інформація про клієнта...",
+    "is_blacklisted": "У чорному списку"
+  }
+}

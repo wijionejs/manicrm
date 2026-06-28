@@ -27,7 +27,8 @@
     "WORKSPACE_LIMIT_REACHED": "You can only create up to {{limit}} workspaces.",
     "SLUG_ALREADY_TAKEN": "This slug is already taken.",
     "NOT_WORKSPACE_MEMBER": "You are not a member of this workspace.",
-    "INSUFFICIENT_PERMISSIONS": "You don't have permission to perform this action."
+    "INSUFFICIENT_PERMISSIONS": "You don't have permission to perform this action.",
+    "CLIENT_NOT_FOUND": "Client not found."
   },
   "dashboard": {
     "greeting": "Hello, {{name}}!",

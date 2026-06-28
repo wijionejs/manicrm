@@ -1,0 +1,39 @@
+{
+  "title": "Clients",
+  "add_client": "Add client",
+  "edit_client": "Edit client",
+  "create_client": "New client",
+  "create_success": "Client added successfully",
+  "update_success": "Client updated",
+  "delete_success": "Client deleted",
+  "delete_confirm_title": "Delete client?",
+  "delete_confirm_description": "This action cannot be undone. Client {{name}} will be permanently deleted.",
+  "empty_title": "No clients yet",
+  "empty_subtitle": "Add your first client to get started.",
+  "creating": "Adding...",
+  "saving": "Saving...",
+  "deleting": "Deleting...",
+  "blacklisted": "Blacklisted",
+  "page_info": "Page {{current}} of {{total}}",
+  "search_placeholder": "Search by name or phone...",
+  "table": {
+    "name": "Name",
+    "contact": "Contact",
+    "birthday": "Birthday",
+    "notes": "Notes",
+    "status": "Status",
+    "actions": "Actions"
+  },
+  "fields": {
+    "first_name": "First name",
+    "last_name": "Last name",
+    "phone": "Phone",
+    "instagram": "Instagram",
+    "telegram": "Telegram",
+    "birthday": "Birthday",
+    "birthday_placeholder": "Pick a date",
+    "notes": "Notes",
+    "notes_placeholder": "Additional info about the client...",
+    "is_blacklisted": "Blacklisted"
+  }
+}

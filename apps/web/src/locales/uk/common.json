@@ -27,7 +27,8 @@
     "WORKSPACE_LIMIT_REACHED": "Можна створити максимум {{limit}} студії.",
     "SLUG_ALREADY_TAKEN": "Цей слаг вже зайнятий.",
     "NOT_WORKSPACE_MEMBER": "Ви не є учасником цієї студії.",
-    "INSUFFICIENT_PERMISSIONS": "У вас немає дозволу на виконання цієї дії."
+    "INSUFFICIENT_PERMISSIONS": "У вас немає дозволу на виконання цієї дії.",
+    "CLIENT_NOT_FOUND": "Клієнта не знайдено."
   },
   "dashboard": {
     "greeting": "Привіт, {{name}}!",
