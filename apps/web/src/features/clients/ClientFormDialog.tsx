@@ -13,6 +13,7 @@ import {
   type UpdateClientDto,
 } from '@manicrm/schemas';
 import { getApiError } from '@/lib/api-error';
+import { te } from '@/lib/zod-error';
 import { cn } from '@/lib/utils';
 import { useCreateClient, useUpdateClient } from './hooks/useClients';
 import type { ClientResponse } from './api/clients';
@@ -115,14 +116,14 @@ export function ClientFormDialog({ workspaceId, open, onOpenChange, client }: Pr
               <Label htmlFor="firstName">{t('fields.first_name')}</Label>
               <Input id="firstName" {...register('firstName')} />
               {errors.firstName && (
-                <p className="text-xs text-destructive">{errors.firstName.message}</p>
+                <p className="text-xs text-destructive">{te(tCommon, errors.firstName.message)}</p>
               )}
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="lastName">{t('fields.last_name')}</Label>
               <Input id="lastName" {...register('lastName')} />
               {errors.lastName && (
-                <p className="text-xs text-destructive">{errors.lastName.message}</p>
+                <p className="text-xs text-destructive">{te(tCommon, errors.lastName.message)}</p>
               )}
             </div>
           </div>
@@ -148,7 +149,7 @@ export function ClientFormDialog({ workspaceId, open, onOpenChange, client }: Pr
               )}
             />
             {errors.phoneNumber && (
-              <p className="text-xs text-destructive">{errors.phoneNumber.message}</p>
+              <p className="text-xs text-destructive">{te(tCommon, errors.phoneNumber.message)}</p>
             )}
           </div>
 

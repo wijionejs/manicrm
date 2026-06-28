@@ -19,6 +19,13 @@
     "services": "Послуги",
     "settings": "Налаштування"
   },
+  "validation": {
+    "required": "Обов'язкове поле",
+    "min_length": "Мінімум {{min}} символів",
+    "max_length": "Максимум {{max}} символів",
+    "slug_format": "Лише малі літери, цифри та дефіс",
+    "invalid_date": "Некоректна дата"
+  },
   "errors": {
     "INTERNAL_SERVER_ERROR": "Щось пішло не так. Спробуйте ще раз.",
     "UNAUTHENTICATED": "Необхідно увійти в систему.",

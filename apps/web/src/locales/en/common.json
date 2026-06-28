@@ -19,6 +19,13 @@
     "services": "Services",
     "settings": "Settings"
   },
+  "validation": {
+    "required": "Required field",
+    "min_length": "At least {{min}} characters",
+    "max_length": "Maximum {{max}} characters",
+    "slug_format": "Only lowercase letters, digits, and hyphens",
+    "invalid_date": "Invalid date"
+  },
   "errors": {
     "INTERNAL_SERVER_ERROR": "Something went wrong. Please try again.",
     "UNAUTHENTICATED": "You must be logged in.",

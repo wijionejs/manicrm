@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 import { createWorkspaceSchema, type CreateWorkspaceDto } from '@manicrm/schemas';
 import { getApiError } from '@/lib/api-error';
+import { te } from '@/lib/zod-error';
 import { useCreateWorkspace } from './hooks/useWorkspaces';
 import {
   Dialog,
@@ -94,14 +95,16 @@ export function CreateWorkspaceDialog({ open, onOpenChange }: Props) {
               placeholder={t('fields.title_placeholder')}
               {...register('title')}
             />
-            {errors.title && <p className="text-sm text-destructive">{errors.title.message}</p>}
+            {errors.title && (
+              <p className="text-sm text-destructive">{te(tCommon, errors.title.message)}</p>
+            )}
           </div>
 
           <div className="space-y-1.5">
             <Label htmlFor="ws-slug">{t('fields.slug')}</Label>
             <Input id="ws-slug" placeholder="my-nail-studio" {...register('slug')} />
             {errors.slug ? (
-              <p className="text-sm text-destructive">{errors.slug.message}</p>
+              <p className="text-sm text-destructive">{te(tCommon, errors.slug.message)}</p>
             ) : (
               <p className="text-xs text-muted-foreground">{t('fields.slug_hint')}</p>
             )}
