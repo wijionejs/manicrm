@@ -7,6 +7,12 @@ export const workspaceMemberRoleEnum = pgEnum('workspace_member_role', [
   'employee',
 ]);
 
+export const workspaceInviteStatusEnum = pgEnum('workspace_invite_status', [
+  'pending',
+  'accepted',
+  'expired',
+]);
+
 export const workspace = pgTable('workspace', {
   id: uuid('id').primaryKey().defaultRandom(),
   title: text('title').notNull(),
@@ -27,5 +33,18 @@ export const workspaceMember = pgTable('workspace_member', {
     .notNull()
     .references(() => user.id, { onDelete: 'cascade' }),
   role: workspaceMemberRoleEnum('role').notNull().default('employee'),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+});
+
+export const workspaceInvite = pgTable('workspace_invite', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  workspaceId: uuid('workspace_id')
+    .notNull()
+    .references(() => workspace.id, { onDelete: 'cascade' }),
+  email: text('email').notNull(),
+  role: workspaceMemberRoleEnum('role').notNull(),
+  token: text('token').notNull().unique(),
+  status: workspaceInviteStatusEnum('status').notNull().default('pending'),
+  expiresAt: timestamp('expires_at').notNull(),
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });

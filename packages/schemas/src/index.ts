@@ -60,3 +60,16 @@ export const listClientsQuerySchema = z.object({
 });
 
 export type ListClientsQueryDto = z.infer<typeof listClientsQuerySchema>;
+
+export const updateMemberRoleSchema = z.object({
+  role: z.enum(['admin', 'employee'], { error: ve('validation.invalid_role') }),
+});
+
+export type UpdateMemberRoleDto = z.infer<typeof updateMemberRoleSchema>;
+
+export const createInviteSchema = z.object({
+  email: z.string().email({ error: ve('validation.invalid_email') }),
+  role: z.enum(['admin', 'employee'], { error: ve('validation.invalid_role') }),
+});
+
+export type CreateInviteDto = z.infer<typeof createInviteSchema>;
