@@ -1,0 +1,56 @@
+{
+  "title": "Команда",
+  "invite_member": "Запросити",
+  "create_invite": "Надіслати запрошення",
+  "invite_success": "Запрошення створено",
+  "remove_success": "Учасника видалено",
+  "role_updated": "Роль оновлено",
+  "remove_confirm_title": "Видалити учасника?",
+  "remove_confirm_description": "{{name}} втратить доступ до цієї студії.",
+  "removing": "Видалення...",
+  "change_role": "Змінити роль",
+  "updating": "Оновлення...",
+  "sending": "Надсилання...",
+  "empty_title": "Поки що лише ви",
+  "empty_subtitle": "Запросіть свою команду для співпраці.",
+  "invites_title": "Очікуючі запрошення",
+  "no_invites": "Немає очікуючих запрошень",
+  "invite_link_copied": "Посилання скопійовано",
+  "copy_link": "Скопіювати",
+  "invite_link_label": "Посилання для запрошення",
+  "invite_link_hint": "Поділіться цим посиланням із запрошеним. Дійсне 7 днів.",
+  "invite_expires": "Дійсне до {{date}}",
+  "done": "Готово",
+  "table": {
+    "member": "Учасник",
+    "role": "Роль",
+    "joined": "Приєднався",
+    "email": "Email",
+    "expires": "Термін дії"
+  },
+  "fields": {
+    "email": "Email",
+    "email_placeholder": "колега@example.com",
+    "role": "Роль"
+  },
+  "roles": {
+    "owner": "Власник",
+    "admin": "Адмін",
+    "employee": "Співробітник"
+  },
+  "accept": {
+    "title": "Запрошення до студії",
+    "your_role": "Ваша роль: {{role}}",
+    "invite_sent_to": "Надіслано на {{email}}",
+    "expires": "Дійсне до {{date}}",
+    "accept_button": "Прийняти запрошення",
+    "accepting": "Приєднання...",
+    "open_workspace": "Відкрити студію",
+    "status_accepted": "Це запрошення вже прийнято.",
+    "status_expired": "Термін дії цього запрошення закінчився.",
+    "success_title": "Ласкаво просимо!",
+    "success_subtitle": "Ви успішно приєдналися до {{workspace}}.",
+    "go_to_app": "До застосунку",
+    "error_title": "Не вдалося приєднатися"
+  }
+}

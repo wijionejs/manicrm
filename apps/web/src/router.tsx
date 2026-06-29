@@ -9,6 +9,8 @@ import { WorkspaceProvider } from '@/features/workspace/WorkspaceContext';
 import { DashboardLayout } from '@/features/dashboard/DashboardLayout';
 import { DashboardPage } from '@/features/dashboard/DashboardPage';
 import { ClientsPage } from '@/features/clients/ClientsPage';
+import { MembersPage } from '@/features/members/MembersPage';
+import { InviteAcceptPage } from '@/features/auth/InviteAcceptPage';
 import { useWorkspaces } from '@/features/workspace/hooks/useWorkspaces';
 import { CreateWorkspaceDialog } from '@/features/workspace/CreateWorkspaceDialog';
 import { Button } from '@/components/ui/button';
@@ -21,6 +23,10 @@ function AuthGuard() {
   }
 
   if (!session) {
+    const path = window.location.pathname;
+    if (path !== '/' && path !== '/login') {
+      localStorage.setItem('auth_redirect', path);
+    }
     return <Navigate to="/login" replace />;
   }
 
@@ -88,6 +94,7 @@ export const router = createBrowserRouter(
       element: <AuthGuard />,
       children: [
         { path: '/', element: <WorkspaceRedirect /> },
+        { path: '/invite/:token', element: <InviteAcceptPage /> },
         {
           path: '/w/:slug',
           element: <WorkspaceProvider />,
@@ -98,6 +105,7 @@ export const router = createBrowserRouter(
                 { path: 'dashboard', element: <DashboardPage /> },
                 { path: 'bookings', element: <ComingSoon title="Bookings" /> },
                 { path: 'clients', element: <ClientsPage /> },
+                { path: 'members', element: <MembersPage /> },
                 { path: 'services', element: <ComingSoon title="Services" /> },
                 { path: 'settings', element: <ComingSoon title="Settings" /> },
               ],

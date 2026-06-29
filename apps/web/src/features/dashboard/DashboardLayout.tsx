@@ -1,6 +1,14 @@
 import { NavLink, Outlet } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { LayoutDashboard, CalendarDays, Users, Scissors, Settings, LogOut } from 'lucide-react';
+import {
+  LayoutDashboard,
+  CalendarDays,
+  Users,
+  Scissors,
+  Settings,
+  LogOut,
+  UserCog,
+} from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +24,7 @@ const NAV_ITEMS = [
   { path: 'dashboard', icon: LayoutDashboard, labelKey: 'nav.dashboard', end: true },
   { path: 'bookings', icon: CalendarDays, labelKey: 'nav.bookings', end: false },
   { path: 'clients', icon: Users, labelKey: 'nav.clients', end: false },
+  { path: 'members', icon: UserCog, labelKey: 'nav.members', end: false },
   { path: 'services', icon: Scissors, labelKey: 'nav.services', end: false },
   { path: 'settings', icon: Settings, labelKey: 'nav.settings', end: false },
 ] as const;

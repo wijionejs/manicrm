@@ -18,10 +18,12 @@ export function LoginPage() {
   }
 
   const handleGoogleSignIn = async () => {
-    await authClient.signIn.social({
-      provider: 'google',
-      callbackURL: `${window.location.origin}`,
-    });
+    const savedRedirect = localStorage.getItem('auth_redirect');
+    const callbackURL = savedRedirect?.startsWith('/')
+      ? `${window.location.origin}${savedRedirect}`
+      : window.location.origin;
+    localStorage.removeItem('auth_redirect');
+    await authClient.signIn.social({ provider: 'google', callbackURL });
   };
 
   return (

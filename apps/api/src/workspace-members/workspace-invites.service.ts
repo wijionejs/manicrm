@@ -10,7 +10,7 @@ import {
 } from '../common/errors/workspace.errors';
 import type { DrizzleDB } from '../db/db.module';
 import { DRIZZLE } from '../db/db.module';
-import { user, workspaceInvite, workspaceMember } from '../db/schema';
+import { user, workspace, workspaceInvite, workspaceMember } from '../db/schema';
 import type { CreateInviteDto } from './dto/workspace-member.dto';
 
 @Injectable()
@@ -49,6 +49,23 @@ export class WorkspaceInvitesService {
       .values({ workspaceId, email: dto.email, role: dto.role, token, expiresAt })
       .returning();
     return invite;
+  }
+
+  async findByToken(token: string) {
+    const [result] = await this.db
+      .select({
+        email: workspaceInvite.email,
+        role: workspaceInvite.role,
+        status: workspaceInvite.status,
+        expiresAt: workspaceInvite.expiresAt,
+        workspace: { title: workspace.title, slug: workspace.slug },
+      })
+      .from(workspaceInvite)
+      .innerJoin(workspace, eq(workspaceInvite.workspaceId, workspace.id))
+      .where(eq(workspaceInvite.token, token))
+      .limit(1);
+    if (!result) throw new InviteNotFoundError();
+    return result;
   }
 
   findAll(workspaceId: string) {

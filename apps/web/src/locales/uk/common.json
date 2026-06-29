@@ -17,6 +17,7 @@
     "bookings": "Записи",
     "clients": "Клієнти",
     "services": "Послуги",
+    "members": "Команда",
     "settings": "Налаштування"
   },
   "validation": {
@@ -35,7 +36,15 @@
     "SLUG_ALREADY_TAKEN": "Цей слаг вже зайнятий.",
     "NOT_WORKSPACE_MEMBER": "Ви не є учасником цієї студії.",
     "INSUFFICIENT_PERMISSIONS": "У вас немає дозволу на виконання цієї дії.",
-    "CLIENT_NOT_FOUND": "Клієнта не знайдено."
+    "CLIENT_NOT_FOUND": "Клієнта не знайдено.",
+    "MEMBER_NOT_FOUND": "Учасника не знайдено.",
+    "CANNOT_MODIFY_OWNER": "Не можна змінити роль власника.",
+    "CANNOT_REMOVE_OWNER": "Не можна видалити власника студії.",
+    "ALREADY_WORKSPACE_MEMBER": "Ця людина вже є учасником.",
+    "INVITE_NOT_FOUND": "Запрошення не знайдено або вже використано.",
+    "INVITE_EXPIRED": "Термін дії цього запрошення закінчився.",
+    "INVITE_EMAIL_MISMATCH": "Це запрошення було надіслано на іншу адресу електронної пошти.",
+    "PENDING_INVITE_ALREADY_EXISTS": "Запрошення на цю адресу вже надіслано."
   },
   "dashboard": {
     "greeting": "Привіт, {{name}}!",

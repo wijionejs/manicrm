@@ -17,6 +17,7 @@
     "bookings": "Bookings",
     "clients": "Clients",
     "services": "Services",
+    "members": "Team",
     "settings": "Settings"
   },
   "validation": {
@@ -35,7 +36,15 @@
     "SLUG_ALREADY_TAKEN": "This slug is already taken.",
     "NOT_WORKSPACE_MEMBER": "You are not a member of this workspace.",
     "INSUFFICIENT_PERMISSIONS": "You don't have permission to perform this action.",
-    "CLIENT_NOT_FOUND": "Client not found."
+    "CLIENT_NOT_FOUND": "Client not found.",
+    "MEMBER_NOT_FOUND": "Member not found.",
+    "CANNOT_MODIFY_OWNER": "Cannot change the owner's role.",
+    "CANNOT_REMOVE_OWNER": "Cannot remove the workspace owner.",
+    "ALREADY_WORKSPACE_MEMBER": "This person is already a member.",
+    "INVITE_NOT_FOUND": "Invite not found or already used.",
+    "INVITE_EXPIRED": "This invite link has expired.",
+    "INVITE_EMAIL_MISMATCH": "This invite was sent to a different email address.",
+    "PENDING_INVITE_ALREADY_EXISTS": "An invite has already been sent to this email."
   },
   "dashboard": {
     "greeting": "Hello, {{name}}!",

@@ -1,0 +1,56 @@
+{
+  "title": "Team",
+  "invite_member": "Invite",
+  "create_invite": "Send invite",
+  "invite_success": "Invite created",
+  "remove_success": "Member removed",
+  "role_updated": "Role updated",
+  "remove_confirm_title": "Remove member?",
+  "remove_confirm_description": "{{name}} will lose access to this workspace.",
+  "removing": "Removing...",
+  "change_role": "Change role",
+  "updating": "Updating...",
+  "sending": "Sending...",
+  "empty_title": "Just you so far",
+  "empty_subtitle": "Invite your team to collaborate.",
+  "invites_title": "Pending Invites",
+  "no_invites": "No pending invites",
+  "invite_link_copied": "Link copied",
+  "copy_link": "Copy link",
+  "invite_link_label": "Invite link",
+  "invite_link_hint": "Share this link with the invitee. It expires in 7 days.",
+  "invite_expires": "Expires {{date}}",
+  "done": "Done",
+  "table": {
+    "member": "Member",
+    "role": "Role",
+    "joined": "Joined",
+    "email": "Email",
+    "expires": "Expires"
+  },
+  "fields": {
+    "email": "Email",
+    "email_placeholder": "colleague@example.com",
+    "role": "Role"
+  },
+  "roles": {
+    "owner": "Owner",
+    "admin": "Admin",
+    "employee": "Employee"
+  },
+  "accept": {
+    "title": "Workspace invitation",
+    "your_role": "Your role: {{role}}",
+    "invite_sent_to": "Sent to {{email}}",
+    "expires": "Expires {{date}}",
+    "accept_button": "Accept invitation",
+    "accepting": "Accepting...",
+    "open_workspace": "Open workspace",
+    "status_accepted": "This invitation has already been accepted.",
+    "status_expired": "This invitation has expired.",
+    "success_title": "You're in!",
+    "success_subtitle": "You've joined {{workspace}} successfully.",
+    "go_to_app": "Go to app",
+    "error_title": "Cannot join workspace"
+  }
+}
