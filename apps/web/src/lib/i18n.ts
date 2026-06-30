@@ -7,11 +7,13 @@ import enAuth from '../locales/en/auth.json';
 import enWorkspace from '../locales/en/workspace.json';
 import enClients from '../locales/en/clients.json';
 import enMembers from '../locales/en/members.json';
+import enServices from '../locales/en/services.json';
 import ukCommon from '../locales/uk/common.json';
 import ukAuth from '../locales/uk/auth.json';
 import ukWorkspace from '../locales/uk/workspace.json';
 import ukClients from '../locales/uk/clients.json';
 import ukMembers from '../locales/uk/members.json';
+import ukServices from '../locales/uk/services.json';
 
 i18n
   .use(LanguageDetector)
@@ -24,6 +26,7 @@ i18n
         workspace: enWorkspace,
         clients: enClients,
         members: enMembers,
+        services: enServices,
       },
       uk: {
         common: ukCommon,
@@ -31,6 +34,7 @@ i18n
         workspace: ukWorkspace,
         clients: ukClients,
         members: ukMembers,
+        services: ukServices,
       },
     },
     fallbackLng: 'uk',

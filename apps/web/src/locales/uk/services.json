@@ -1,0 +1,40 @@
+{
+  "title": "Послуги",
+  "add_service": "Додати послугу",
+  "edit_service": "Редагувати послугу",
+  "create_service": "Нова послуга",
+  "create_success": "Послугу успішно додано",
+  "update_success": "Послугу оновлено",
+  "delete_success": "Послугу видалено",
+  "delete_confirm_title": "Видалити послугу?",
+  "delete_confirm_description": "Цю дію не можна скасувати. Послугу \"{{name}}\" буде видалено назавжди.",
+  "empty_title": "Немає послуг",
+  "empty_subtitle": "Додайте послуги, які надає ваша студія, щоб почати роботу.",
+  "creating": "Додавання...",
+  "saving": "Збереження...",
+  "deleting": "Видалення...",
+  "page_info": "Сторінка {{current}} з {{total}}",
+  "search_placeholder": "Пошук за назвою...",
+  "duration_min_one": "{{count}} хв",
+  "duration_min_few": "{{count}} хв",
+  "duration_min_many": "{{count}} хв",
+  "duration_min_other": "{{count}} хв",
+  "table": {
+    "name": "Назва",
+    "description": "Опис",
+    "duration": "Базова тривалість",
+    "status": "Статус"
+  },
+  "fields": {
+    "name": "Назва",
+    "description": "Опис",
+    "description_placeholder": "Опишіть послугу...",
+    "base_duration": "Базова тривалість",
+    "minutes": "хв",
+    "is_active": "Активна"
+  },
+  "status": {
+    "active": "Активна",
+    "inactive": "Неактивна"
+  }
+}

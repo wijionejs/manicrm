@@ -1,0 +1,38 @@
+{
+  "title": "Services",
+  "add_service": "Add service",
+  "edit_service": "Edit service",
+  "create_service": "New service",
+  "create_success": "Service added successfully",
+  "update_success": "Service updated",
+  "delete_success": "Service deleted",
+  "delete_confirm_title": "Delete service?",
+  "delete_confirm_description": "This action cannot be undone. Service \"{{name}}\" will be permanently deleted.",
+  "empty_title": "No services yet",
+  "empty_subtitle": "Add the treatments your studio offers to get started.",
+  "creating": "Adding...",
+  "saving": "Saving...",
+  "deleting": "Deleting...",
+  "page_info": "Page {{current}} of {{total}}",
+  "search_placeholder": "Search by name...",
+  "duration_min_one": "{{count}} min",
+  "duration_min_other": "{{count}} min",
+  "table": {
+    "name": "Name",
+    "description": "Description",
+    "duration": "Base duration",
+    "status": "Status"
+  },
+  "fields": {
+    "name": "Name",
+    "description": "Description",
+    "description_placeholder": "Describe the service...",
+    "base_duration": "Base duration",
+    "minutes": "min",
+    "is_active": "Active"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive"
+  }
+}
