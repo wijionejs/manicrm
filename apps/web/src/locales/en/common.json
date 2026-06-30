@@ -18,6 +18,7 @@
     "clients": "Clients",
     "services": "Services",
     "members": "Team",
+    "rates": "Rates",
     "settings": "Settings"
   },
   "validation": {
@@ -25,7 +26,9 @@
     "min_length": "At least {{min}} characters",
     "max_length": "Maximum {{max}} characters",
     "slug_format": "Only lowercase letters, digits, and hyphens",
-    "invalid_date": "Invalid date"
+    "invalid_date": "Invalid date",
+    "min_value": "Minimum value is {{min}}",
+    "invalid_role": "Invalid role"
   },
   "errors": {
     "INTERNAL_SERVER_ERROR": "Something went wrong. Please try again.",
@@ -44,7 +47,9 @@
     "INVITE_NOT_FOUND": "Invite not found or already used.",
     "INVITE_EXPIRED": "This invite link has expired.",
     "INVITE_EMAIL_MISMATCH": "This invite was sent to a different email address.",
-    "PENDING_INVITE_ALREADY_EXISTS": "An invite has already been sent to this email."
+    "PENDING_INVITE_ALREADY_EXISTS": "An invite has already been sent to this email.",
+    "SERVICE_NOT_FOUND": "Service not found.",
+    "SERVICE_EMPLOYEE_RATE_NOT_FOUND": "Rate not found."
   },
   "dashboard": {
     "greeting": "Hello, {{name}}!",

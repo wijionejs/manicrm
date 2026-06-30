@@ -1,0 +1,7 @@
+{
+  "title": "Rates",
+  "rates_for": "Rates for {{name}}",
+  "select_member_hint": "Select a team member to configure their rates.",
+  "empty_members": "Add team members first to configure rates.",
+  "empty_services": "Add active services first to configure rates."
+}

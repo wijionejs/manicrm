@@ -11,6 +11,7 @@ import { DashboardPage } from '@/features/dashboard/DashboardPage';
 import { ClientsPage } from '@/features/clients/ClientsPage';
 import { MembersPage } from '@/features/members/MembersPage';
 import { ServicesPage } from '@/features/services/ServicesPage';
+import { RatesPage } from '@/features/rates/RatesPage';
 import { InviteAcceptPage } from '@/features/auth/InviteAcceptPage';
 import { useWorkspaces } from '@/features/workspace/hooks/useWorkspaces';
 import { CreateWorkspaceDialog } from '@/features/workspace/CreateWorkspaceDialog';
@@ -108,6 +109,7 @@ export const router = createBrowserRouter(
                 { path: 'clients', element: <ClientsPage /> },
                 { path: 'members', element: <MembersPage /> },
                 { path: 'services', element: <ServicesPage /> },
+                { path: 'rates', element: <RatesPage /> },
                 { path: 'settings', element: <ComingSoon title="Settings" /> },
               ],
             },

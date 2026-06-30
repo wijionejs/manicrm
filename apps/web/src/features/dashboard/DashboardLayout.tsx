@@ -8,6 +8,7 @@ import {
   Settings,
   LogOut,
   UserCog,
+  Banknote,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -21,21 +22,37 @@ import { useWorkspace } from '@/features/workspace/WorkspaceContext';
 import { WorkspaceSwitcher } from '@/features/workspace/WorkspaceSwitcher';
 
 const NAV_ITEMS = [
-  { path: 'dashboard', icon: LayoutDashboard, labelKey: 'nav.dashboard', end: true },
-  { path: 'bookings', icon: CalendarDays, labelKey: 'nav.bookings', end: false },
-  { path: 'clients', icon: Users, labelKey: 'nav.clients', end: false },
-  { path: 'members', icon: UserCog, labelKey: 'nav.members', end: false },
-  { path: 'services', icon: Scissors, labelKey: 'nav.services', end: false },
-  { path: 'settings', icon: Settings, labelKey: 'nav.settings', end: false },
+  {
+    path: 'dashboard',
+    icon: LayoutDashboard,
+    labelKey: 'nav.dashboard',
+    end: true,
+    managerOnly: false,
+  },
+  {
+    path: 'bookings',
+    icon: CalendarDays,
+    labelKey: 'nav.bookings',
+    end: false,
+    managerOnly: false,
+  },
+  { path: 'clients', icon: Users, labelKey: 'nav.clients', end: false, managerOnly: false },
+  { path: 'members', icon: UserCog, labelKey: 'nav.members', end: false, managerOnly: false },
+  { path: 'services', icon: Scissors, labelKey: 'nav.services', end: false, managerOnly: false },
+  { path: 'rates', icon: Banknote, labelKey: 'nav.rates', end: false, managerOnly: true },
+  { path: 'settings', icon: Settings, labelKey: 'nav.settings', end: false, managerOnly: false },
 ] as const;
 
 function NavItems({ slug, orientation }: { slug: string; orientation: 'vertical' | 'horizontal' }) {
   const { t } = useTranslation('common');
+  const { workspace } = useWorkspace();
+  const isManager = workspace.role === 'owner' || workspace.role === 'admin';
+  const visibleItems = NAV_ITEMS.filter((item) => !item.managerOnly || isManager);
 
   if (orientation === 'horizontal') {
     return (
       <>
-        {NAV_ITEMS.map(({ path, icon: Icon, labelKey, end }) => (
+        {visibleItems.map(({ path, icon: Icon, labelKey, end }) => (
           <NavLink
             key={path}
             to={`/w/${slug}/${path}`}
@@ -57,7 +74,7 @@ function NavItems({ slug, orientation }: { slug: string; orientation: 'vertical'
 
   return (
     <>
-      {NAV_ITEMS.map(({ path, icon: Icon, labelKey, end }) => (
+      {visibleItems.map(({ path, icon: Icon, labelKey, end }) => (
         <NavLink
           key={path}
           to={`/w/${slug}/${path}`}

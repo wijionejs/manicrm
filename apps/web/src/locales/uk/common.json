@@ -18,6 +18,7 @@
     "clients": "Клієнти",
     "services": "Послуги",
     "members": "Команда",
+    "rates": "Прайс-лист",
     "settings": "Налаштування"
   },
   "validation": {
@@ -25,7 +26,9 @@
     "min_length": "Мінімум {{min}} символів",
     "max_length": "Максимум {{max}} символів",
     "slug_format": "Лише малі літери, цифри та дефіс",
-    "invalid_date": "Некоректна дата"
+    "invalid_date": "Некоректна дата",
+    "min_value": "Мінімальне значення — {{min}}",
+    "invalid_role": "Некоректна роль"
   },
   "errors": {
     "INTERNAL_SERVER_ERROR": "Щось пішло не так. Спробуйте ще раз.",
@@ -44,7 +47,9 @@
     "INVITE_NOT_FOUND": "Запрошення не знайдено або вже використано.",
     "INVITE_EXPIRED": "Термін дії цього запрошення закінчився.",
     "INVITE_EMAIL_MISMATCH": "Це запрошення було надіслано на іншу адресу електронної пошти.",
-    "PENDING_INVITE_ALREADY_EXISTS": "Запрошення на цю адресу вже надіслано."
+    "PENDING_INVITE_ALREADY_EXISTS": "Запрошення на цю адресу вже надіслано.",
+    "SERVICE_NOT_FOUND": "Послугу не знайдено.",
+    "SERVICE_EMPLOYEE_RATE_NOT_FOUND": "Ставку не знайдено."
   },
   "dashboard": {
     "greeting": "Привіт, {{name}}!",
