@@ -6,7 +6,8 @@
   "scripts": {
     "prepare": "lefthook install",
     "dev:web": "pnpm --filter web dev",
-    "dev:api": "pnpm --filter api start:dev",
+    "dev:api": "pnpm --filter api dev",
+    "dev": "pnpm -r --parallel dev",
     "build": "pnpm -r build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

@@ -61,6 +61,36 @@ export const listClientsQuerySchema = z.object({
 
 export type ListClientsQueryDto = z.infer<typeof listClientsQuerySchema>;
 
+export const createServiceSchema = z.object({
+  name: z
+    .string()
+    .min(1, ve('validation.required'))
+    .max(100, ve('validation.max_length', { max: 100 })),
+  description: z
+    .string()
+    .min(1, ve('validation.required'))
+    .max(1000, ve('validation.max_length', { max: 1000 })),
+  baseDurationMinutes: z
+    .number()
+    .int()
+    .min(5, ve('validation.min_value', { min: 5 })),
+});
+
+export const updateServiceSchema = createServiceSchema.partial().extend({
+  isActive: z.boolean().optional(),
+});
+
+export type CreateServiceDto = z.infer<typeof createServiceSchema>;
+export type UpdateServiceDto = z.infer<typeof updateServiceSchema>;
+
+export const listServicesQuerySchema = z.object({
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(100).default(15),
+  search: z.string().optional(),
+});
+
+export type ListServicesQueryDto = z.infer<typeof listServicesQuerySchema>;
+
 export const updateMemberRoleSchema = z.object({
   role: z.enum(['admin', 'employee'], { error: ve('validation.invalid_role') }),
 });

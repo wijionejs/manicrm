@@ -62,7 +62,7 @@ function InviteCopyButton({ token }: { token: string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    const link = `${window.location.origin}/invite/${token}`;
+    const link = `${window.location.origin}/app/invite/${token}`;
     await navigator.clipboard.writeText(link);
     setCopied(true);
     toast.success(t('invite_link_copied'));

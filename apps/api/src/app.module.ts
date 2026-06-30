@@ -10,6 +10,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { WorkspacesModule } from './workspaces/workspaces.module';
 import { ClientsModule } from './clients/clients.module';
 import { WorkspaceMembersModule } from './workspace-members/workspace-members.module';
+import { ServicesModule } from './services/services.module';
 
 const envSchema = z.object({
   DATABASE_URL: z.string(),
@@ -32,6 +33,7 @@ const envSchema = z.object({
     WorkspacesModule,
     ClientsModule,
     WorkspaceMembersModule,
+    ServicesModule,
   ],
   controllers: [AppController],
   providers: [
