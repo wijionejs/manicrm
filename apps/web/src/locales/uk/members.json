@@ -17,6 +17,7 @@
   "no_invites": "Немає очікуючих запрошень",
   "invite_link_copied": "Посилання скопійовано",
   "copy_link": "Скопіювати",
+  "cancel_invite": "Скасувати",
   "invite_link_label": "Посилання для запрошення",
   "invite_link_hint": "Поділіться цим посиланням із запрошеним. Дійсне 7 днів.",
   "invite_expires": "Дійсне до {{date}}",

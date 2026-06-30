@@ -50,6 +50,10 @@ export function fetchInvites(workspaceId: string): Promise<InviteResponse[]> {
   return api.get(`workspaces/${workspaceId}/invites`).json();
 }
 
+export async function cancelInvite(workspaceId: string, inviteId: string): Promise<void> {
+  await api.delete(`workspaces/${workspaceId}/invites/${inviteId}`);
+}
+
 export interface InviteInfoResponse {
   email: string;
   role: 'admin' | 'employee';

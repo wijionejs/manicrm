@@ -1,4 +1,14 @@
-import { Body, Controller, Get, Param, ParseUUIDPipe, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  Param,
+  ParseUUIDPipe,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { Roles } from '../common/decorators/roles.decorator';
 import { ZodValidationPipe } from '../common/pipes/zod-validation.pipe';
 import { WorkspaceMemberGuard } from '../workspaces/guards/workspace-member.guard';
@@ -23,5 +33,14 @@ export class WorkspaceInvitesController {
   @Get()
   findAll(@Param('workspaceId', ParseUUIDPipe) workspaceId: string) {
     return this.workspaceInvitesService.findAll(workspaceId);
+  }
+
+  @Delete(':inviteId')
+  @HttpCode(204)
+  cancel(
+    @Param('workspaceId', ParseUUIDPipe) workspaceId: string,
+    @Param('inviteId', ParseUUIDPipe) inviteId: string,
+  ) {
+    return this.workspaceInvitesService.cancel(workspaceId, inviteId);
   }
 }

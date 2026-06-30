@@ -76,6 +76,17 @@ export class WorkspaceInvitesService {
       .orderBy(workspaceInvite.createdAt);
   }
 
+  async cancel(workspaceId: string, inviteId: string) {
+    const [invite] = await this.db
+      .select({ id: workspaceInvite.id })
+      .from(workspaceInvite)
+      .where(and(eq(workspaceInvite.id, inviteId), eq(workspaceInvite.workspaceId, workspaceId)))
+      .limit(1);
+    if (!invite) throw new InviteNotFoundError();
+
+    await this.db.delete(workspaceInvite).where(eq(workspaceInvite.id, inviteId));
+  }
+
   async accept(token: string, userId: string, userEmail: string) {
     const [invite] = await this.db
       .select()

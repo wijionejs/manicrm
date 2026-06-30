@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
-import { UserPlus, MoreHorizontal, Pencil, Trash2, Users2, Copy, Check } from 'lucide-react';
+import { UserPlus, MoreHorizontal, Pencil, Trash2, Users2, Copy, Check, X } from 'lucide-react';
 import { toast } from 'sonner';
 import { useWorkspace } from '@/features/workspace/WorkspaceContext';
 import { cn } from '@/lib/utils';
-import { useMembers, useInvites } from './hooks/useMembers';
+import { useMembers, useInvites, useCancelInvite } from './hooks/useMembers';
 import type { MemberResponse, InviteResponse } from './api/members';
 import { InviteDialog } from './InviteDialog';
 import { UpdateRoleDialog } from './UpdateRoleDialog';
@@ -57,7 +57,7 @@ function MemberAvatar({ name, image }: { name: string; image: string | null }) {
   );
 }
 
-function InviteCopyButton({ token }: { token: string }) {
+function InviteCopyButton({ token, className }: { token: string; className?: string }) {
   const { t } = useTranslation('members');
   const [copied, setCopied] = useState(false);
 
@@ -70,9 +70,35 @@ function InviteCopyButton({ token }: { token: string }) {
   };
 
   return (
-    <Button variant="outline" size="sm" onClick={handleCopy} className="gap-1.5">
+    <Button variant="outline" size="sm" onClick={handleCopy} className={cn('gap-1.5', className)}>
       {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
       {t('copy_link')}
+    </Button>
+  );
+}
+
+function InviteCancelButton({
+  workspaceId,
+  inviteId,
+  className,
+}: {
+  workspaceId: string;
+  inviteId: string;
+  className?: string;
+}) {
+  const { t } = useTranslation('members');
+  const { mutate, isPending } = useCancelInvite(workspaceId);
+
+  return (
+    <Button
+      variant="ghost"
+      size="sm"
+      className={cn('gap-1.5 text-destructive hover:text-destructive', className)}
+      disabled={isPending}
+      onClick={() => mutate(inviteId)}
+    >
+      <X className="size-3.5" />
+      {t('cancel_invite')}
     </Button>
   );
 }
@@ -223,12 +249,12 @@ export function MembersPage() {
                       <TableHead>{t('table.email')}</TableHead>
                       <TableHead>{t('table.role')}</TableHead>
                       <TableHead>{t('table.expires')}</TableHead>
-                      <TableHead className="w-36" />
+                      <TableHead className="w-52" />
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {pendingInvites.map((invite) => (
-                      <InviteRow key={invite.id} invite={invite} />
+                      <InviteRow key={invite.id} invite={invite} workspaceId={workspace.id} />
                     ))}
                   </TableBody>
                 </Table>
@@ -239,7 +265,7 @@ export function MembersPage() {
                 {pendingInvites.map((invite) => (
                   <div
                     key={invite.id}
-                    className="rounded-lg border bg-card p-4 flex items-center justify-between gap-3"
+                    className="rounded-lg border bg-card p-4 flex flex-col gap-3"
                   >
                     <div className="flex flex-col min-w-0">
                       <span className="text-sm font-medium truncate">{invite.email}</span>
@@ -252,7 +278,14 @@ export function MembersPage() {
                         </span>
                       </div>
                     </div>
-                    <InviteCopyButton token={invite.token} />
+                    <div className="grid grid-cols-2 gap-2">
+                      <InviteCopyButton token={invite.token} className="w-full justify-center" />
+                      <InviteCancelButton
+                        workspaceId={workspace.id}
+                        inviteId={invite.id}
+                        className="w-full justify-center"
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
@@ -276,7 +309,7 @@ export function MembersPage() {
   );
 }
 
-function InviteRow({ invite }: { invite: InviteResponse }) {
+function InviteRow({ invite, workspaceId }: { invite: InviteResponse; workspaceId: string }) {
   return (
     <TableRow>
       <TableCell className="text-sm">{invite.email}</TableCell>
@@ -287,7 +320,10 @@ function InviteRow({ invite }: { invite: InviteResponse }) {
         {format(new Date(invite.expiresAt), 'dd.MM.yyyy')}
       </TableCell>
       <TableCell>
-        <InviteCopyButton token={invite.token} />
+        <div className="flex items-center gap-1">
+          <InviteCopyButton token={invite.token} />
+          <InviteCancelButton workspaceId={workspaceId} inviteId={invite.id} />
+        </div>
       </TableCell>
     </TableRow>
   );

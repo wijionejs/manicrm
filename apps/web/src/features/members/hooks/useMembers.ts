@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import type { CreateInviteDto, UpdateMemberRoleDto } from '@manicrm/schemas';
 import {
   acceptInvite,
+  cancelInvite,
   createInvite,
   fetchInviteInfo,
   fetchInvites,
@@ -48,6 +49,14 @@ export function useCreateInvite(workspaceId: string) {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (dto: CreateInviteDto) => createInvite(workspaceId, dto),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: invitesKey(workspaceId) }),
+  });
+}
+
+export function useCancelInvite(workspaceId: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (inviteId: string) => cancelInvite(workspaceId, inviteId),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: invitesKey(workspaceId) }),
   });
 }

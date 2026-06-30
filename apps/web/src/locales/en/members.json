@@ -17,6 +17,7 @@
   "no_invites": "No pending invites",
   "invite_link_copied": "Link copied",
   "copy_link": "Copy link",
+  "cancel_invite": "Cancel",
   "invite_link_label": "Invite link",
   "invite_link_hint": "Share this link with the invitee. It expires in 7 days.",
   "invite_expires": "Expires {{date}}",
