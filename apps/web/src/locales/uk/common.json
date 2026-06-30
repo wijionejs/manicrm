@@ -49,7 +49,7 @@
     "INVITE_EMAIL_MISMATCH": "Це запрошення було надіслано на іншу адресу електронної пошти.",
     "PENDING_INVITE_ALREADY_EXISTS": "Запрошення на цю адресу вже надіслано.",
     "SERVICE_NOT_FOUND": "Послугу не знайдено.",
-    "SERVICE_EMPLOYEE_RATE_NOT_FOUND": "Ставку не знайдено."
+    "SERVICE_EMPLOYEE_RATE_NOT_FOUND": "Прайс не знайдено."
   },
   "dashboard": {
     "greeting": "Привіт, {{name}}!",
