@@ -11,6 +11,7 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
 import { ClientsModule } from './clients/clients.module';
 import { WorkspaceMembersModule } from './workspace-members/workspace-members.module';
 import { ServicesModule } from './services/services.module';
+import { ServiceEmployeeRatesModule } from './service-employee-rates/service-employee-rates.module';
 
 const envSchema = z.object({
   DATABASE_URL: z.string(),
@@ -34,6 +35,7 @@ const envSchema = z.object({
     ClientsModule,
     WorkspaceMembersModule,
     ServicesModule,
+    ServiceEmployeeRatesModule,
   ],
   controllers: [AppController],
   providers: [

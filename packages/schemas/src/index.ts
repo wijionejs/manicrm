@@ -91,6 +91,21 @@ export const listServicesQuerySchema = z.object({
 
 export type ListServicesQueryDto = z.infer<typeof listServicesQuerySchema>;
 
+export const upsertServiceEmployeeRateSchema = z.object({
+  serviceId: z.string().uuid(),
+  workspaceMemberId: z.string().uuid(),
+  price: z.number().min(0, ve('validation.min_value', { min: 0 })),
+});
+
+export type UpsertServiceEmployeeRateDto = z.infer<typeof upsertServiceEmployeeRateSchema>;
+
+export const listServiceEmployeeRatesQuerySchema = z.object({
+  serviceId: z.string().uuid().optional(),
+  workspaceMemberId: z.string().uuid().optional(),
+});
+
+export type ListServiceEmployeeRatesQueryDto = z.infer<typeof listServiceEmployeeRatesQuerySchema>;
+
 export const updateMemberRoleSchema = z.object({
   role: z.enum(['admin', 'employee'], { error: ve('validation.invalid_role') }),
 });
