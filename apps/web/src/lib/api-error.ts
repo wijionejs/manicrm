@@ -6,13 +6,11 @@ export interface ApiErrorData {
   metadata?: Record<string, unknown>;
 }
 
-export async function getApiError(err: unknown): Promise<ApiErrorData> {
+export function getApiError(err: unknown): ApiErrorData {
   if (err instanceof HTTPError) {
-    try {
-      const body = (await err.response.json()) as ApiErrorData;
-      if (typeof body.key === 'string') return body;
-    } catch {
-      return { key: 'INTERNAL_SERVER_ERROR', statusCode: 500 };
+    const data = err.data as Record<string, unknown> | null | undefined;
+    if (data != null && typeof data.key === 'string') {
+      return data as unknown as ApiErrorData;
     }
   }
   return { key: 'INTERNAL_SERVER_ERROR', statusCode: 500 };
